@@ -1,6 +1,5 @@
 ﻿using CleanArchitecture.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.CodeAnalysis;
 
 namespace CleanArchitecture.Infrastructure.Data.Context
 {
