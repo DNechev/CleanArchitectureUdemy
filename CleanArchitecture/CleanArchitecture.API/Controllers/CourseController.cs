@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CleanArchitecture.Application.Interfaces;
+using CleanArchitecture.Application.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,5 +13,19 @@ namespace CleanArchitecture.API.Controllers
     [ApiController]
     public class CourseController : ControllerBase
     {
+        private readonly ICourseService _courseService;
+
+        public CourseController(ICourseService courseService)
+        {
+            _courseService = courseService;
+        }
+
+        [HttpPost]
+        public IActionResult CreateCourse([FromBody] CourseViewModel course)
+        {
+            _courseService.Create(course);
+
+            return Ok(course);
+        }
     }
 }
