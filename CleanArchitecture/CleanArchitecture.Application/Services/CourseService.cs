@@ -1,16 +1,26 @@
 ﻿using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Application.ViewModels;
+using CleanArchitecture.Domain.Core.Bus;
+using CleanArchitecture.Domain.Core.Commands;
 using CleanArchitecture.Domain.Interfaces;
 
 namespace CleanArchitecture.Application.Services
 {
     public class CourseService : ICourseService
     {
-        ICourseRepository _courseRepository;
+        private readonly ICourseRepository _courseRepository;
+        private readonly IMediatorHandler _bus;
 
-        public CourseService(ICourseRepository courseRepository)
+        public CourseService(ICourseRepository courseRepository, IMediatorHandler bus)
         {
-            this._courseRepository = courseRepository;
+            _courseRepository = courseRepository;
+            _bus = bus;
+        }
+
+        public void Create(CourseViewModel course)
+        {
+            CreateCourseCommand command = new CreateCourseCommand(course.Name, course.Description, course.ImageUrl);
+            _bus.SendCommand(command);
         }
 
         public CourseViewModel GetCourses()
