@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using CleanArchitecture.Infrastructure.IoC;
 using CleanArchitecture.Infrastructure.Data.Context;
 using Microsoft.EntityFrameworkCore;
+using MediatR;
 
 namespace CleanArchitecture.API
 {
@@ -22,13 +23,16 @@ namespace CleanArchitecture.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<CleanArchDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ClearnArchDbConnection")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanArchitecture.API", Version = "v1" });
             });
-            services.AddDbContext<CleanArchDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ClearnArchDbConnection")));
+
+            services.AddMediatR(typeof(Startup)); 
+
             RegisterServices(services);
         }
 
