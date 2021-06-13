@@ -21,8 +21,8 @@ namespace CleanArchitecture.Domain.Core.CommandHandlers
             var course = new Course()
             {
                 Name = request.Name,
-                Description = request.CourseDescription,
-                ImageUrl = request.CourseImageUrl
+                Description = request.Description,
+                ImageUrl = request.ImageUrl
             };
 
             _courseRepository.AddCourse(course);

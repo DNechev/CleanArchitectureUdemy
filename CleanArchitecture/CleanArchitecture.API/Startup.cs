@@ -8,6 +8,7 @@ using CleanArchitecture.Infrastructure.IoC;
 using CleanArchitecture.Infrastructure.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using MediatR;
+using CleanArchitecture.API.Configurations;
 
 namespace CleanArchitecture.API
 {
@@ -31,7 +32,9 @@ namespace CleanArchitecture.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanArchitecture.API", Version = "v1" });
             });
 
-            services.AddMediatR(typeof(Startup)); 
+            services.AddMediatR(typeof(Startup));
+
+            services.RegisterAutoMapper();
 
             RegisterServices(services);
         }

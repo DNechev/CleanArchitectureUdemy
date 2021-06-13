@@ -5,8 +5,8 @@
         public CreateCourseCommand(string name, string description, string imageUrl)
         {
             this.Name = name;
-            this.CourseDescription = description;
-            this.CourseImageUrl = imageUrl;
+            this.Description = description;
+            this.ImageUrl = imageUrl;
         }
     }
 }

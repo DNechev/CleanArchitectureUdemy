@@ -4,8 +4,8 @@
     {
         public string Name { get; protected set; }
 
-        public string CourseDescription { get; protected set; }
+        public string Description { get; protected set; }
 
-        public string CourseImageUrl { get; protected set; }
+        public string ImageUrl { get; protected set; }
     }
 }

@@ -18,9 +18,7 @@ namespace CleanArchitecture.Mvc.Controllers
         [HttpGet("Course/Courses")]
         public IActionResult Courses()
         {
-            CourseViewModel viewModel = _courseService.GetCourses();
-
-            return View("Views/Course/Courses.cshtml", viewModel);
+            return View("Views/Course/Courses.cshtml", _courseService.GetCourses());
         }
     }
 }

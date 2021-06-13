@@ -1,7 +1,4 @@
-﻿using CleanArchitecture.Domain.Entities;
-using System.Collections.Generic;
-
-namespace CleanArchitecture.Application.ViewModels
+﻿namespace CleanArchitecture.Application.ViewModels
 {
     public class CourseViewModel
     {
@@ -10,7 +7,5 @@ namespace CleanArchitecture.Application.ViewModels
         public string Description { get; set; }
 
         public string ImageUrl { get; set; }
-
-        public IEnumerable<Course> Courses { get; set; }
     }
 }
