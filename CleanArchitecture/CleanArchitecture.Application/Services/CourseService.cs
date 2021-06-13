@@ -24,7 +24,7 @@ namespace CleanArchitecture.Application.Services
 
         public void Create(CourseViewModel course)
         {
-            var command = _mapper.Map<CourseCommand>(course);
+            var command = _mapper.Map<CreateCourseCommand>(course);
 
             _bus.SendCommand(command);
         }
